@@ -4,8 +4,11 @@ import api from '../services/api';
 interface Message {
   id: string;
   text: string;
-  timestamp: number;
-  senderId: string;
+  timestamp?: number;
+  senderId?: string;
+  user_id?: string;
+  user_name?: string;
+  created_at?: number;
 }
 
 interface MessagesState {
@@ -40,7 +43,7 @@ const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    addMessage: (state, action: PayloadAction<Message>) => {
+    addMessage: (state, action: PayloadAction<any>) => {
       state.messages.push(action.payload);
     },
   },
