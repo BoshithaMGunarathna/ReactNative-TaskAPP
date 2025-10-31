@@ -1,11 +1,20 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import http from 'http';
+import { Server } from 'socket.io';
 import pool from './db.js';
 
 dotenv.config();
 
 const app = express();
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -132,7 +141,12 @@ app.post('/api/messages', async (req, res) => {
         );
 
         if (Array.isArray(messages) && messages.length > 0) {
-            res.status(201).json(messages[0]);
+            const messageWithUser = messages[0];
+            
+            // Broadcast the new message to all connected clients
+            io.emit('message:new', messageWithUser);
+            
+            res.status(201).json(messageWithUser);
         } else {
             res.status(201).json({ 
                 id: messageId, 
@@ -149,8 +163,13 @@ app.post('/api/messages', async (req, res) => {
     }
 });
 
+// Socket.io connection handler
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
+
 // Start server
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
