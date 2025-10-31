@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { enableScreens } from 'react-native-screens';
 import LoginScreen from './src/screens/LoginScreen';
 import MainScreen from './src/screens/MainScreen';
+
+enableScreens(false);
 
 export type RootStackParamList = {
   Login: undefined;
@@ -30,8 +33,26 @@ export default function App() {
             options={{ title: 'Messages' }}
           />
         </Stack.Navigator>
-        <StatusBar style="auto" />
       </NavigationContainer>
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  text: {
+    fontSize: 16,
+    color: '#666',
+  },
+});
+
