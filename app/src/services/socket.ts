@@ -1,7 +1,15 @@
 import { io } from 'socket.io-client';
+import Constants from 'expo-constants';
 
+// Read backend URL from Expo config extra or environment as a fallback.
+// When publishing, set `expo.extra.backendUrl` in app.json so the published bundle
+// knows where the API/socket server is hosted.
+const baseURL =
+  Constants.expoConfig?.extra?.backendUrl ||
+  process.env.BACKEND_URL ||
+  'http://192.168.181.122:4000';
 
-const baseURL = 'http://192.168.181.122:4000';
+console.log('🔌 Socket.IO connecting to:', baseURL);
 
 // Create and export socket instance with reconnection settings
 export const socket = io(baseURL, {

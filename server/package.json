@@ -10,7 +10,8 @@
     "dev": "nodemon src/index.ts",
     "test": "jest --no-cache",
     "migrate": "ts-node src/migrations/add_password_column.ts",
-    "migrate:all": "ts-node src/migrations/run_all_migrations.ts"
+    "migrate:all": "ts-node src/migrations/run_all_migrations.ts",
+    "setup-db": "ts-node src/migrations/create_tables.ts"
   },
   "keywords": [],
   "author": "",

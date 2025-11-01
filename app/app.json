@@ -22,12 +22,20 @@
       },
       "permissions": [
         "NOTIFICATIONS",
+        "NOTIFICATIONS",
+        "NOTIFICATIONS",
         "NOTIFICATIONS"
       ],
       "package": "com.anonymous.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "backendUrl": "https://reactnative-taskapp-production.up.railway.app",
+      "eas": {
+        "projectId": "51a6d99f-9872-469e-8129-7c9afcc154c6"
+      }
     },
     "notification": {
       "icon": "./assets/icon.png",
@@ -42,6 +50,12 @@
         }
       ],
       "expo-font"
-    ]
+    ],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/51a6d99f-9872-469e-8129-7c9afcc154c6"
+    }
   }
 }
