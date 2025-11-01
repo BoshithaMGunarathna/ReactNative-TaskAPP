@@ -19,10 +19,29 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "NOTIFICATIONS",
+        "NOTIFICATIONS"
+      ],
+      "package": "com.anonymous.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "notification": {
+      "icon": "./assets/icon.png",
+      "color": "#2196F3"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#2196F3"
+        }
+      ],
+      "expo-font"
+    ]
   }
 }
