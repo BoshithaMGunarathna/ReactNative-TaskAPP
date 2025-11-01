@@ -11,7 +11,8 @@
     "test": "jest --no-cache",
     "migrate": "ts-node src/migrations/add_password_column.ts",
     "migrate:all": "ts-node src/migrations/run_all_migrations.ts",
-    "setup-db": "ts-node src/migrations/create_tables.ts"
+    "setup-db": "ts-node src/migrations/create_tables.ts",
+    "setup-db:prod": "node dist/migrations/create_tables.js"
   },
   "keywords": [],
   "author": "",
